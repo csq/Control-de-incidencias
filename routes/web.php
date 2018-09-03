@@ -21,18 +21,23 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/reportar', 'HomeController@report');
 
-
+Route::get('/acerca-de', 'HomeController@about');
 
 
 //metodod desde la pagina de routes
 //damos acceso diferente como admini
 //name space para los 3 cotroladores
-Route::group(['middleware' => 'auth',"namespace"=>"Admin"], function () {
+Route::group(['middleware' => 'admin',"namespace"=>"Admin"], function () {
 
 	Route::get('/usuarios', 'UserController@index');
 	Route::get('/trabajos', 'TrabajosController@index');
 	Route::get('/config', 'ConfigController@index');
-    
+});
+
+Route::group(['middleware' => 'guest',"namespace"=>"Guest"], function () {
+
+	Route::get('/acerca-de', 'AboutController@index');
+	Route::get('/instrucciones', 'InstructionController@index');
 });
 
 
