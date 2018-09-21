@@ -44,28 +44,27 @@
                     </a>
                 </div>
 
-                @if (auth()->check())
+                
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <ul class="nav navbar-nav">
-                            <form class="navbar-form">
-                                <div class="btn btn-default btn-xs dropdown-toggle"> <!--btn btn-default btn-xs dropdown-toggle form-group-->
-                                    <select name="" class="form-control">
-                                        <option value="">Proyecto A</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </ul>
+                        @if (auth()->check())
+                        <form class="navbar-form">
+                            <div class="btn btn-default btn-xs dropdown-toggle"> <!--btn btn-default btn-xs dropdown-toggle form-group-->
+                                <select name="" class="form-control">
+                                    <option value="">Proyecto A</option>
+                                </select>
+                            </div>
+                        </form>
+                        @endif
                     </ul>
-                @endif
-
+                
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <!-- <li><a href="{{ url('/register') }}">Register</a></li> -->
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -116,6 +115,7 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    @yield('scripts')
 
 </body>
 </html>
